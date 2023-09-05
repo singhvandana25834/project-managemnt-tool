@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Platform</title>
+    <style>
+        /* Basic CSS styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #message {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        #task {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        #messages {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Social Media Platform</h1>
+    </header>
+    <div class="container">
+        <h2>Post a Message</h2>
+        <textarea id="message" placeholder="Write your message..."></textarea>
+        <button id="postMessage">Post</button>
+        <h2>Assign a Task</h2>
+        <textarea id="task" placeholder="Describe the task..."></textarea>
+        <button id="assignTask">Assign</button>
+        <h2>Messages and Tasks</h2>
+        <div id="messages"></div>
+    </div>
+
+    <script>
+        // JavaScript for handling messages and tasks
+        const messageInput = document.getElementById('message');
+        const taskInput = document.getElementById('task');
+        const postButton = document.getElementById('postMessage');
+        const assignButton = document.getElementById('assignTask');
+        const messagesDiv = document.getElementById('messages');
+
+        postButton.addEventListener('click', () => {
+            const messageText = messageInput.value;
+            if (messageText.trim() !== '') {
+                const messageElement = document.createElement('div');
+                messageElement.textContent = messageText;
+                messagesDiv.appendChild(messageElement);
+                messageInput.value = '';
+            }
+        });
+
+        assignButton.addEventListener('click', () => {
+            const taskText = taskInput.value;
+            if (taskText.trim() !== '') {
+                const taskElement = document.createElement('div');
+                taskElement.textContent = `Task: ${taskText}`;
+                messagesDiv.appendChild(taskElement);
+                taskInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
